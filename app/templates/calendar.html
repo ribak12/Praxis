@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Praxis Calendar</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <style>
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .day-cell {
+            background: white;
+            height: 80px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .day-cell.glow {
+            box-shadow: 0 0 20px rgba(120,120,255,0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Praxis Calendar</h2>
+        <div id="calendar" class="calendar-grid"></div>
+    </div>
+    <script src="/static/js/calendar.js"></script>
+</body>
+</html>

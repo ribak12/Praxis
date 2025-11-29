@@ -1,0 +1,4 @@
+[
+  {"id":"q1","text":"I can focus on the task at hand.","axes":{"logic":0.2,"emotion":-0.1,"action":0.3,"reflection":0.0},"rarity":1,"difficulty":1},
+  {"id":"q2","text":"I feel connected to people around me.","axes":{"logic":-0.1,"emotion":0.4,"action":0.0,"reflection":0.1},"rarity":1,"difficulty":1}
+]

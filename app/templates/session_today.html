@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"/><title>Daily Praxis</title><link rel="stylesheet" href="/static/css/main.css"></head>
+<body>
+  <main class="container">
+    <h1>Daily Praxis</h1>
+    <div id="deck-root">Loading...</div>
+  </main>
+  <script>
+    async function init(){
+      const res = await fetch('/api/session/start',{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({user_id:null, date_local: new Date().toLocaleDateString('en-CA')})});
+      const data = await res.json();
+      if (data.error) { document.getElementById('deck-root').innerText = data.error; return; }
+      const qids = data.question_ids;
+      const all = await fetch('/api/_questions_bulk', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ ids: qids })});
+      const qs = await all.json();
+      window.__PRACTICE_SESSION = { session_id: data.session_id, questions: qs };
+      const s = document.createElement('script'); s.src='/static/js/session_deck.js'; document.body.appendChild(s);
+    }
+    init();
+  </script>
+</body>
+</html>
